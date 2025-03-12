@@ -45,14 +45,6 @@ public class OrderController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-//    @PostMapping("/register")
-//    public OrderDTO createOrder(@RequestBody @Valid OrderDTO orderDTO) {
-//        Order orderData = convertToOrder(orderDTO);
-//        Order newOrder = orderService.create(orderData);
-//        return convertToOrderDTO(newOrder);
-//    }
-
-
     @ExceptionHandler
     private ResponseEntity<OrderErrorResponse> handleException(OrderNotFoundException e) {
         OrderErrorResponse response = new OrderErrorResponse(

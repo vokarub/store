@@ -72,39 +72,6 @@ public class ProductsController {
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); // 403
     }
 
-//    фильтр по цветам
-//    @GetMapping("/catalog/filter/flowers")
-//    public List<ProductDTO> getFlowersByFilter(List<Flower> flowers) {
-//        Set<Product> productSet = productService.findAll().stream().collect(Collectors.toSet());
-//        Set<Product> filteredProducts = new HashSet<>();
-//        for (Flower flower : flowers) {
-//            for (Product product : productSet) {
-//                if (product.getFlowers().contains(flower)) {
-//                    filteredProducts.add(product);
-//                }
-//            }
-//        }
-//        return filteredProducts.stream().map(this::convertToBouquetDTO).collect(Collectors.toList());
-//    }
-
-
-//    фильтр по цене
-//    @GetMapping("/catalog/filter/price")
-//    public List<ProductDTO> getFlowersByPrice(List<Integer> prices) {
-//        int minPrice = prices.get(0);
-//        int maxPrice = prices.get(1);
-//        List<Product> products = productService.findAll();
-//        List<Product> filteredProducts = new ArrayList<>();
-//        for (Product product : products) {
-//            if (minPrice <= product.getProductPrice() && product.getProductPrice() <= maxPrice) {
-//                filteredProducts.add(product);
-//            }
-//        }
-//
-//        return filteredProducts.stream().map(this::convertToBouquetDTO).collect(Collectors.toList());
-//
-//    }
-
     private Product convertToBouquet(ProductDTO productDTO) {
         return modelMapper.map(productDTO, Product.class);
     }

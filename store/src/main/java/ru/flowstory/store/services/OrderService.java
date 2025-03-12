@@ -32,12 +32,6 @@ public class OrderService {
     public Optional<Order> findByCustomerMobile(String mobile) {
         return orderRepository.findByCustomerMobile(mobile);
     }
-//    public void updateStatus(int orderId, boolean executed) {
-//        Order order = orderRepository.findById(orderId).orElse(null);
-//        if (order != null) {
-//            orderRepository.save(order);
-//        }
-//    }
 
     @Transactional
     public void createOrder(OrderDTO orderDTO) {
@@ -52,31 +46,6 @@ public class OrderService {
         orderToAdd.setOrderDate(LocalDateTime.now());
         orderRepository.save(orderToAdd);
     }
-
-//
-//    @Transactional
-//    public void addAllToCart(List<CartItem> itemsToAdd) {
-//        for (CartItem item : itemsToAdd) {
-//            Optional<Product> product = productService.findById(item.getProduct().getId());
-//            if (product.isPresent() && product.get().isInStock()) {
-//                order.update(product.get(), item.getQuantity());
-//                updated = true;
-//            }
-//        }
-//        orderRepository.save(cart);
-//    }
-//
-//    @Transactional
-//    public void save(Order order) {
-//        enrichOrder(order);
-//        orderRepository.save(order);
-//    }
-//
-//    private void enrichOrder(Order order) {
-//        int productsCost = cartService.getCartOrCreate(order.getCustomerMobile()).getProductsCost();
-//        order.setTotalPrice(order.isDeliveryIncluded() ? (productsCost + MarketProperties.getDeliveryCost()) : productsCost);
-//        order.setOrderDate(LocalDateTime.now());
-//    }
 
     private Order convertToOrder(OrderDTO orderDTO) {        return modelMapper.map(orderDTO, Order.class);    }
 
